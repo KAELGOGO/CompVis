@@ -94,7 +94,7 @@ const LaneGuardDashboard = () => {
           >
             {/* TAG VIDEO UNTUK BACKGROUND */}
             <video
-              src="public\project_video.mp4"
+              src="laneguard-web/public/project_video.mp4"
               autoPlay
               loop
               muted
