@@ -40,7 +40,7 @@ const LaneGuardDashboard = () => {
                   ? "text-red-500 animate-pulse"
                   : "text-emerald-500 dark:text-emerald-400"
               }
-              size={28} // Ukuran sedikit diperkecil untuk mobile
+              size={28}
             />
             {/* Teks dikecilkan di mobile (text-xl), kembali besar (text-2xl) di md */}
             <h1 className="text-xl md:text-2xl font-bold tracking-wider text-slate-800 dark:text-white">
@@ -77,7 +77,6 @@ const LaneGuardDashboard = () => {
         </header>
 
         {/* --- MAIN CONTENT AREA --- */}
-        {/* Padding lebih rapat (p-2) di mobile, kembali lega (p-4) di desktop */}
         <main className="flex-1 flex flex-col p-2 md:p-4 gap-4 relative">
           {/* Banner Peringatan - Penyesuaian ukuran teks dan padding */}
           {isWarning && (
@@ -90,7 +89,6 @@ const LaneGuardDashboard = () => {
           )}
 
           {/* --- VIDEO FEED AREA --- */}
-          {/* Lebar video otomatis full, melingkar lebih sedikit di mobile (rounded-xl vs rounded-2xl) */}
           <div
             className={`w-full max-w-5xl mx-auto aspect-video bg-black rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-4 relative transition-colors duration-300 ${isWarning ? "border-red-500 shadow-lg shadow-red-500/50" : "border-slate-300 dark:border-slate-800"}`}
           >
@@ -106,7 +104,6 @@ const LaneGuardDashboard = () => {
           </div>
 
           {/* --- METRICS DASHBOARD --- */}
-          {/* PENTING: grid-cols-1 untuk mobile (atas bawah), md:grid-cols-2 untuk desktop (kanan kiri) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 flex-1">
             {/* 1. Radius of Curvature Metric */}
             <div className="bg-white dark:bg-slate-900 rounded-xl md:rounded-2xl p-4 flex flex-col justify-center border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300 min-h-[100px]">
@@ -136,22 +133,23 @@ const LaneGuardDashboard = () => {
                   Vehicle Offset
                 </span>
               </div>
-              <div className="flex items-baseline gap-2">
-                {/* Ukuran angka dikecilkan sedikit di mobile */}
+              <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className={`text-4xl md:text-5xl font-mono font-bold ${
+                      isWarning
+                        ? "text-red-600 dark:text-red-400"
+                        : "text-emerald-600 dark:text-emerald-400"
+                    }`}
+                  >
+                    {Math.abs(offset).toFixed(2)}
+                  </span>
+                  <span className="text-lg md:text-xl text-slate-400 font-mono">
+                    m
+                  </span>
+                </div>
                 <span
-                  className={`text-4xl md:text-5xl font-mono font-bold ${
-                    isWarning
-                      ? "text-red-600 dark:text-red-400"
-                      : "text-emerald-600 dark:text-emerald-400"
-                  }`}
-                >
-                  {Math.abs(offset).toFixed(2)}
-                </span>
-                <span className="text-lg md:text-xl text-slate-400 font-mono">
-                  m
-                </span>
-                <span
-                  className={`ml-auto text-xl md:text-2xl font-bold uppercase ${
+                  className={`text-xl md:text-2xl font-bold uppercase ${
                     offset > 0
                       ? "text-blue-500 dark:text-blue-400"
                       : offset < 0
