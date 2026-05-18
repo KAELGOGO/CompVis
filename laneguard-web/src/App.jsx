@@ -6,7 +6,7 @@ import {
   ShieldCheck,
   Sun,
   Moon,
-  Activity // <-- Tambahan Icon baru untuk FPS
+  Activity 
 } from "lucide-react";
 
 const LaneGuardDashboard = () => {
@@ -14,7 +14,7 @@ const LaneGuardDashboard = () => {
   const [curvature, setCurvature] = useState(850);
   const [isWarning, setIsWarning] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [fps, setFps] = useState(24); // <-- Tambahan State FPS
+  const [fps, setFps] = useState(24); 
 
   // SIMULASI DATA
   useEffect(() => {
